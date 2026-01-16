@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Core;
+
+
 class Controller
 {
     protected function view($view, $view_data = [])
@@ -8,7 +11,7 @@ class Controller
 
         $view_file = __DIR__ . '/../views' . $view . '.php';
         if (!file_exists($view_file)) {
-            throw new Exception("File not found");
+            throw new \Exception("File not found");
         }
         require_once $view_file;
     }

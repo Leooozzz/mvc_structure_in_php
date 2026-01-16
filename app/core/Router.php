@@ -1,6 +1,10 @@
 <?php
-require_once '../app/controllers/Homecontroller.php';
-require_once '../app/controllers/erros/HttpErrorController.php';
+namespace App\Core;
+
+use App\Controller\Homecontroller;
+use App\Controllers\Erros\HttpErrorController;
+
+
 
 class Router
 {
@@ -12,7 +16,7 @@ class Router
 
         $controller_name = $parts[0] ?? 'Home';
 
-        $controller_name = ucfirst($controller_name) . 'Controller';
+        $controller_name = 'App\Controllers\\' . ucfirst($controller_name) . 'Controller';
 
         if (!class_exists($controller_name)) {
             $controller = new HttpErrorController();
@@ -23,6 +27,8 @@ class Router
         $controller = new $controller_name();
 
         $action_name = $parts[1] ?? 'index';
+       
+
 
         if (!method_exists($controller_name, $action_name)) {
             $controller = new HttpErrorController();

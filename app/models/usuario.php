@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Models;
 
 class Usuario    {
     public function get_user_data()
