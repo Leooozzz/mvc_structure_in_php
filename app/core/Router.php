@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Core;
 
 use App\Controller\Homecontroller;
@@ -16,6 +17,7 @@ class Router
 
         $controller_name = $parts[0] ?? 'Home';
 
+
         $controller_name = 'App\Controllers\\' . ucfirst($controller_name) . 'Controller';
 
         if (!class_exists($controller_name)) {
@@ -27,7 +29,7 @@ class Router
         $controller = new $controller_name();
 
         $action_name = $parts[1] ?? 'index';
-       
+
 
 
         if (!method_exists($controller_name, $action_name)) {
